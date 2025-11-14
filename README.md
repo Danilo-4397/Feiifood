@@ -219,5 +219,10 @@ O projeto FEIFood é uma aplicação completa que demonstra domínio em:
 ✔ CRUD completo
 ✔ Arquitetura modular
 ✔ Boas práticas com DAO e JDBC
-
 O sistema funciona do início ao fim, atendendo todos os requisitos acadêmicos.
+
+[Projeto final feiifood.pdf](https://github.com/user-attachments/files/23557187/Projeto.final.feiifood.pdf)
+
+
+
+
