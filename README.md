@@ -1,225 +1,207 @@
-FEIFood – Sistema de Pedidos em Java + PostgreSQL
+# 🍔 FEIFood – Sistema de Pedidos (Java + PostgreSQL)
 
+O **FEIFood** é um sistema desktop desenvolvido em **Java (Swing)** com integração ao **PostgreSQL**, criado para simular um ambiente real de pedidos de alimentos.
 
+O projeto foi construído com foco em **estruturação de dados, integração com banco e organização de código**, reproduzindo o fluxo de um sistema de delivery.
 
+---
 
+# 🚀 Funcionalidades
 
+* Cadastro de usuários
+* Login com validação no banco de dados
+* Busca de alimentos em tempo real
+* Listagem de resultados em tabela (JTable)
+* Criação de pedidos
+* Cálculo automático do total
+* Avaliação de pedidos
+* Interface gráfica em Java Swing
+* Integração completa com PostgreSQL via JDBC
 
+---
 
+# 🧠 Arquitetura do Projeto
 
-O FEIFood é um sistema desktop desenvolvido em Java (Swing) integrado ao PostgreSQL, criado para simular um ambiente real de pedidos de alimentos.
-O sistema permite cadastro, login, busca de alimentos, criação de pedidos e avaliação, funcionando como um pequeno iFood acadêmico.
+O projeto segue uma estrutura baseada em **MVC (Model-View-Controller)** simplificado:
 
-🚀 Funcionalidades
-✔ Cadastro de Usuário
-✔ Login com validação no banco de dados
-✔ Busca de alimentos
-✔ Listagem de alimentos encontrados
-✔ Cadastro de pedidos
-✔ Avaliação de pedidos
-✔ Interface gráfica moderna construída em Swing
-✔ Integração completa com banco PostgreSQL via JDBC
-🏗 Arquitetura do Projeto
-
-O projeto segue uma arquitetura MVC simplificada:
 
 /src
- ├── model/     → Entidades: Usuario, Alimento, Pedido, Avaliacao
- ├── dao/       → Classes de acesso ao banco (DAO)
- ├── view/      → Telas Swing (Login, Cadastro, Pedido, Avaliação...)
- └── util/      → Conexão JDBC
+ ├── model/   → Entidades (Usuario, Alimento, Pedido, Avaliacao)
+ ├── dao/     → Acesso ao banco (DAO)
+ ├── view/    → Interfaces gráficas (Swing)
+ └── util/    → Conexão com banco (JDBC)
 
-DAO (Data Access Object)
+### 🔹 Camada DAO
 
-UsuarioDAO
+Responsável por toda manipulação de dados (CRUD):
 
-AlimentoDAO
+* UsuarioDAO
+* AlimentoDAO
+* PedidoDAO
+* AvaliacaoDAO
 
-PedidoDAO
+---
 
-AvaliacaoDAO
+# 🗄 Banco de Dados
 
-Conexao (gerencia a conexão JDBC)
+O sistema utiliza PostgreSQL com as seguintes tabelas:
 
-View (interface Swing)
-
-TelaLogin
-
-TelaCadastro
-
-TelaPrincipal
-
-TelaBuscaAlimento
-
-TelaPedido
-
-TelaAvaliacao
-
-🗄 Banco de Dados (PostgreSQL)
-
-O sistema utiliza o PostgreSQL com as tabelas:
-
-🧑‍💼 usuarios
+### 👤 usuarios
 
 | id | nome | email | senha |
 
-🍔 alimentos
+### 🍔 alimentos
 
 | id | nome | categoria | preco | restaurante_id |
 
-🧾 pedidos
+### 🧾 pedidos
 
 | id | usuario_id | total | data |
 
-⭐ avaliacao
+### ⭐ avaliacao
 
 | id | pedido_id | nota | comentario |
 
-Foram adicionados mais de 30 alimentos reais à base.
+📌 O banco já possui mais de **30 alimentos cadastrados** para testes.
 
-⚙️ Tecnologias Utilizadas
+---
 
-Java SE 17
+# ⚙️ Tecnologias Utilizadas
 
-Swing
+* Java SE 17
+* Swing (Interface gráfica)
+* PostgreSQL 16
+* JDBC
+* Apache Maven
+* NetBeans
 
-PostgreSQL 16
+---
 
-JDBC (Driver 42.7.7)
+# ▶️ Como Executar o Projeto
 
-Apache Maven
+### 1. Clonar o repositório
 
-NetBeans
 
-📥 Como executar o projeto
-1️⃣ Clonar o repositório
-git clone https://github.com/usuario/FEIFood.git
+git clone https://github.com/Danilo-4397/FEIFood.git
 
-2️⃣ Importar no NetBeans
 
-Vá em File > Open Project
+### 2. Importar no NetBeans
 
-Selecione a pasta FEIFood
+* File → Open Project
+* Selecionar a pasta do projeto
 
-3️⃣ Configurar o banco de dados
+### 3. Criar o banco de dados
 
-Crie o banco:
 
 CREATE DATABASE Feiifood;
 
 
-Importe as tabelas e os alimentos cadastrados (arquivo SQL do repositório).
+### 4. Importar estrutura e dados
 
-4️⃣ Ajustar credenciais do banco
+* Execute o arquivo .sql disponível no repositório
 
-No arquivo Conexao.java:
+### 5. Configurar conexão
 
+No arquivo Conexao.java, ajuste:
+
+java
 private static final String URL = "jdbc:postgresql://localhost:5433/Feiifood";
 private static final String USER = "postgres";
-private static final String PASSWORD = "SUA_SENHA_AQUI";
+private static final String PASSWORD = "SUA_SENHA";
 
-5️⃣ Executar
 
-Execute a classe:
+### 6. Executar o sistema
 
-TelaLogin.java
+* Execute a classe TelaLogin.java
 
-🖥 Interface do Sistema
-🔐 Tela de Login
+---
 
-Login estilizado, com fonte grande e interface moderna.
+# 🖥 Fluxo do Sistema
 
-Botão para acessar cadastro.
+1. Login ou cadastro de usuário
+2. Busca de alimentos
+3. Seleção e criação de pedido
+4. Armazenamento no banco de dados
+5. Avaliação do pedido
 
-🏠 Tela Principal
+---
 
-Acesso a:
+# 🧪 Testes Realizados
 
-Fazer Pedido
+* Múltiplos usuários cadastrados
+* Inserção de +30 alimentos
+* Fluxo completo de pedidos
+* Testes de avaliação
+* Busca por nome
+* Validação da interface (responsividade e legibilidade)
 
-Buscar Alimentos
+---
 
-Avaliar Pedidos
+# 🧱 Principais Desafios
 
-🔍 Busca de Alimentos
+**Driver JDBC não encontrado**
+Correção no Maven (POM) e ajuste manual
 
-Consulta em tempo real ao banco
+**Método duplicado no DAO**
+Refatoração do código
 
-Listagem em tabela Swing (JTable)
+**Erro de coluna no banco**
+Ajuste de SQL e mapeamento
 
-🛒 Pedidos
+**Interface com baixa legibilidade**
+Melhoria de fontes e layout
 
-Adicionar alimentos
+---
 
-Exibir itens selecionados
+# 📊 Foco em Dados
 
-Calcular total
+Este projeto também demonstra:
 
-Registrar pedido no banco
+* Modelagem relacional
+* Manipulação de dados com SQL
+* Integração aplicação + banco
+* Operações CRUD completas
 
-⭐ Avaliação
+📌 Possibilita futuras análises como:
 
-Seleção de pedidos realizados
+* Produtos mais pedidos
+* Avaliações médias
+* Comportamento de usuários
 
-Atribuição de nota
+---
 
-Comentário explicativo
+# 🚀 Melhorias Futuras
 
-🧪 Testes Realizados
+* Implementação de API REST
+* Dashboard com Power BI
+* Painel administrativo
+* Upload de imagens
+* Migração para JavaFX
 
-Testes com múltiplos usuários
+---
 
-Teste de inserção de 30+ alimentos
+# 🎯 Conclusão
 
-Testes de pedido completo
+O FEIFood é um projeto completo que demonstra:
 
-Teste de avaliação
+* Programação orientada a objetos
+* Integração com banco de dados
+* Estruturação de dados
+* CRUD completo
+* Organização em camadas (DAO + MVC)
 
-Teste de busca por nome
+O sistema funciona ponta a ponta, simulando um ambiente real de pedidos.
 
-Verificação da interface (tamanhos, fontes e responsividade em Windows)
+---
 
-🧱 Dificuldades e Soluções
-❗ Driver JDBC não era encontrado
+# 🔗 Acesse o Projeto
 
-➡ Correção do systemPath no POM
-➡ Ajuste manual do jar na pasta lib
+👉 [https://github.com/usuario/FEIFood](https://github.com/usuario/FEIFood)
 
-❗ Método duplicado em PedidoDAO
+---
 
-➡ Remoção de duplicata
+💡 Projeto desenvolvido para fins acadêmicos e prática em desenvolvimento orientado a dados.
 
-❗ Coluna "categoria" não encontrada
-
-➡ Correção do SQL e mapeamento
-
-❗ Interface com texto pequeno
-
-➡ Ajuste de fontes e componentes Swing
-
-📌 Próximas melhorias (opcionais)
-
-Implementar carrinho mais avançado
-
-Adicionar imagens dos alimentos
-
-Criar painel administrativo
-
-Criar API REST futuramente
-
-Migrar interface para JavaFX
-
-🎉 Conclusão
-
-O projeto FEIFood é uma aplicação completa que demonstra domínio em:
-
-✔ Programação orientada a objetos
-✔ Integração com banco de dados
-✔ Construção de interface gráfica
-✔ CRUD completo
-✔ Arquitetura modular
-✔ Boas práticas com DAO e JDBC
-O sistema funciona do início ao fim, atendendo todos os requisitos acadêmicos.
 
 [Projeto final feiifood.pdf](https://github.com/user-attachments/files/23557187/Projeto.final.feiifood.pdf)
 
